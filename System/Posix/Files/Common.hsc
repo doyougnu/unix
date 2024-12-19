@@ -1,4 +1,5 @@
 {-# LANGUAGE CApiFFI #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE PatternSynonyms #-}
@@ -155,9 +156,11 @@ module System.Posix.Files.Common (
 import System.Posix.Types
 import System.IO.Unsafe
 import Data.Bits
-import Data.Int
 import Data.Ratio
+#if __GLASGOW_HASKELL__ <= 912
+import Data.Int
 import Data.Word
+#endif
 #ifdef HAVE_STATX
 import Data.Time.Clock (secondsToNominalDiffTime)
 import Data.Fixed (Fixed(..))

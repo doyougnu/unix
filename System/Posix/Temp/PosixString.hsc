@@ -1,4 +1,5 @@
 {-# LANGUAGE CApiFFI #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE PackageImports #-}
 -----------------------------------------------------------------------------
 -- |
@@ -26,7 +27,9 @@ import qualified "os-string" System.OsString.Data.ByteString.Short as BC
 #else
 import qualified "filepath" System.OsPath.Data.ByteString.Short as BC
 #endif
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 
 import Foreign.C
 
@@ -140,4 +143,3 @@ mktemp template = do
 
 _X :: Word8
 _X = 0x58
-

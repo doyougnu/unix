@@ -95,7 +95,9 @@ module System.Posix.Signals (
   -- siginterrupt
   ) where
 
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 import Foreign.C
 import Foreign.ForeignPtr
 import Foreign.Marshal
